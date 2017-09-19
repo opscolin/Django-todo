@@ -1,0 +1,24 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+<div class="row">
+  
+  <div class="col-md-12 col-sm-12 todo-add">
+    <h4>修改 |&nbsp;</h4><span>Modify</span>
+    <form class="form-inline" action="{% url 'todo:edit' todo.id  %}" method="post">
+    {% csrf_token %}
+      <div class="form-group">
+		{% if todo %}
+        <input type="text" name="title"  class="form-control" size="80" value="{{ todo.title }}">
+		{% else %}
+		<input type="text" name="title"  class="form-control" size="80" placeholder="请输入事项描述">
+		{% endif %}
+      </div>
+      <button type="submit" class="btn btn-success">修改</button>
+    </form>
+  </div>
+
+</div>
+
+
+{% endblock %}

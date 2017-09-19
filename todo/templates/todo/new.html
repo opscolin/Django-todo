@@ -1,0 +1,20 @@
+{% extends "todo/base.html" %}
+
+{% block content %}
+<div class="row">
+  
+  <div class="col-md-12 col-sm-12 todo-add">
+    <h4>新增 |&nbsp;</h4><span>New</span>
+    <form class="form-inline" action="{% url 'todo:new'  %}" method="post">
+    {% csrf_token %}
+      <div class="form-group">
+		<input type="text" name="title"  class="form-control" size="80" placeholder="请输入事项描述">
+      </div>
+      <button type="submit" class="btn btn-success">新增</button>
+    </form>
+  </div>
+
+</div>
+
+
+{% endblock %}

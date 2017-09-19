@@ -1,0 +1,23 @@
+
+ul {list-style-type: none; padding-left: 0px;}
+
+.todo-message {padding-bottom: 20px;text-align:center}
+.todo-message > ul > li {color: green;}
+.todo-wait, .todo-finish, .todo-add { margin-bottom: 20px;}
+.todo-wait > h4, .todo-finish > h4, .todo-add > h4{display: inline-block; margin-bottom:15px; color: green;}
+.todo-wait > ul, .todo-finish > ul {margin-left: 20px;}
+
+
+.todo-wait ul li, .todo-finish ul li  { list-style-type:none; margin-bottom:10px; padding-bottom:10px; border-bottom:1px dotted #CCC; }
+.todo-wait ul li a, .todo-finish ul li a { color:green; }
+// .todo-finish ul li a { color:green; }
+
+.todo-finish ul li del { padding-left:15px; background:url(images/ok.gif) no-repeat left center; }
+.todo-finish ul li.finished { color:#666;}
+
+.todo-finish ul li a.disable-modify {color: #e3e3e3;}
+.todo-title {
+font-size: 16px;
+}
+
+.todo-title-time, todo-title-op { font-size:12px;}

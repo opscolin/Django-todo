@@ -1,0 +1,76 @@
+{% extends "todo/base.html" %}
+
+{% block content %} 
+<div class="row">
+  <div class="col-md-12 col-sm-12 todo-message">
+    {% if messages %}
+      <ul class="messages">
+        {% for message in messages %}
+          <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+  </div>
+
+  <div class="col-md-12 col-sm-12 todo-add">
+    <h4>新增 |&nbsp;</h4><span>Add New</span>
+    <form class="form-inline" action="{% url 'todo:new' %}" method="post" id="post_new">
+    {% csrf_token %}
+      <div class="form-group">
+        <input type="text" name="title"  class="form-control" size="80" placeholder="请输入事项描述">
+      </div>
+      <button type="submit" class="btn btn-success">新增</button>
+    </form>
+  </div>
+
+
+  <div class="col-md-12 col-sm-12 todo-wait">
+    <h4>待办事项 |&nbsp;</h4><span>Wait to do</span>
+    <br>
+    <ul>
+	{% for todo in todos %}
+		{% if todo.finished == 0 %}
+		<li>
+          <span class="todo-title">{{ todo.title }}</span> 
+          <span class="todo-title-time">&nbsp;&nbsp;更新时间:{{ todo.updatetime|date:"Y-m-d" }}&nbsp;&nbsp;
+          <span class="todo-title-op">
+            <a href="{% url 'todo:finish' todo.id %}?status=yes">完成</a>,
+            <a href="{% url 'todo:edit' todo.id %}">修改</a>,
+            <a href="{% url 'todo:delete' todo.id %}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+          </span>
+    </li>
+
+		{% endif %}	
+	{% endfor %}
+    </ul>
+  </div>
+
+  <div class="col-md-12 col-sm-12 todo-finish">
+    <h4>已完成事项 |&nbsp;</h4><span>Already finished</span>
+    <br>
+    <ul>
+      {% for todo in todos %}
+		{% if todo.finished == 1%}
+        <li class="finished">
+    			<del>
+    				<span class="todo-title">{{ todo.title }}</span> 
+    			</del>
+    			<span class="todo-title-time">&nbsp;&nbsp;更新时间:{{ todo.updatetime|date:"Y-m-d" }}&nbsp;&nbsp;
+    			<span class="todo-title-op">
+    				<a href="{% url 'todo:finish' todo.id %}?status=no">恢复</a>,
+    				<a href="{% url 'todo:edit' todo.id %}" class="disable-modify">修改</a>,
+    				<a href="{% url 'todo:delete' todo.id %}" onclick="return confirm('删除以后不能恢复的，确定？')">删除</a>
+    			</span>
+        </li>
+		{% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+
+  
+
+
+</div>
+
+
+{% endblock %}
