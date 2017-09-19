@@ -24,13 +24,17 @@ Quick start
 
     url(r'^todo/', include('todo.urls')),
 
-3. Run below command to create todo models migrations.
+3. Run below command to create todo models migrations.:
 
-```python manage.py makemigrations todo```
+
+    python manage.py makemigrations todo
+
     
-4. Run below command to create todo real models.
+4. Run below command to create todo real models.:
 
-```python manage.py migrate todo```
+
+    python manage.py migrate todo
+
     
 5. Start the development server and visit http://127.0.0.1:8000/admin/
    to create a todo  (you'll need the Admin app enabled).
