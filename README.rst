@@ -9,6 +9,20 @@ or you can delete items
 
 Detailed documentation is in the "docs" directory.
 
+Installation
+------------
+
+you can install via `pip`
+
+    pip install colinws-todo
+     
+or you can `git clone` this repository and use `setup.py`
+
+    git clone https://github.com/opscolin/Django-todo.git  
+    
+    cd Django-todo  
+    
+    python setup.py install  
 
 Quick start
 -----------
